@@ -1,0 +1,42 @@
+{
+  "name": "magento1devbox-web",
+  "description": "A Dev Box for Magento Community Edition 1.9.x",
+  "authors": [
+    {
+      "name": "Rateb Ben Moussa",
+      "email": "bmrateb@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "magento-hackathon/magento-composer-installer": "~3.1.0",
+    "aydin-hassan/magento-core-composer-installer": "~1.2",
+    "firegento/magento": "~1.9.3.0"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.firegento.com"
+    }
+  ],
+  "config": {
+    "discard-changes": true,
+    "optimize-autoloader": true,
+    "prepend-autoloader": true
+  },
+  "prefer-stable": true,
+  "extra": {
+    "magento-root-dir": "web",
+    "with-bootstrap-patch": false,
+    "skip-suggest-repositories": true,
+    "auto-append-gitignore": true,
+    "magento-deploystrategy": "copy",
+    "magento-force": true,
+    "magento-core-deploy" : {
+      "excludes": [
+        "dev",
+        "downloader"
+      ]
+    }
+  }
+}

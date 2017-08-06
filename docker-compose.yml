@@ -1,0 +1,26 @@
+nginx:
+  build: docker-images/nginx
+  ports:
+    - "80:80"
+    - "443:443"
+  links:
+    - "php:phpfpmupstream"
+  volumes_from:
+    - php
+php:
+  build: docker-images/php7
+  links:
+    - "mysql:mysql"
+  volumes:
+    - .:/var/www/html
+mysql:
+  image: mysql
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    MYSQL_DATABASE: ${MYSQL_DATABASE}
+    MYSQL_USER: ${MYSQL_USER}
+    MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  volumes:
+    - ./db:/var/lib/mysql

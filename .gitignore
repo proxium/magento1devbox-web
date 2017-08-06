@@ -1,0 +1,5 @@
+.idea
+composer.lock
+.env
+vendor
+web
